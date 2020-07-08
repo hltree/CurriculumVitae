@@ -1,28 +1,173 @@
-<template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+<template lang="pug">
+    #app
+        GlobalHeader
+        router-view
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import jsonData from './assets/json/data'
+  import GlobalHeader from './components/l-global_header'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    components: {
+      GlobalHeader
+    },
+    data() {
+      return {
+        jsonData
+      }
+    }
   }
-}
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+
+    $font_color: #333;
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+        background: none repeat scroll 0 0;
+        border: 0 none;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+        position: relative;
+        vertical-align: baseline;
+    }
+
+
+    body {
+        position: relative;
+        font-size: 16px;
+        color: $font_color;
+        line-height: 1.75;
+        overflow-wrap: break-word;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        line-height: 1.2;
+    }
+
+    table, caption, tbody, tfoot, thead {
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+    }
+
+    th, td {
+        vertical-align: top;
+        background: none repeat scroll 0 0;
+        margin: 0;
+        outline: 0 none;
+        padding: 0;
+    }
+
+    p, span, div {
+        line-height: inherit;
+    }
+
+    a {
+        color: $font_color;
+        text-decoration: none;
+
+        img {
+            border: none;
+            outline: 0 !important;
+        }
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    button:focus {
+        outline: 0 !important;
+    }
+
+    button:active {
+        outline: none;
+    }
+
+    a, p, img, div {
+        &:focus {
+            outline: none;
+        }
+    }
+
+    ol, ul {
+        list-style: none outside none;
+    }
+
+    fieldset, img {
+        vertical-align: bottom;
+    }
+
+    blockquote, q {
+        quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: none;
+    }
+
+    ins {
+        text-decoration: none;
+    }
+
+    del {
+        text-decoration: line-through;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    br {
+        letter-spacing: 0;
+    }
+
+    hr {
+        border: 0 none;
+        height: 0;
+        visibility: hidden;
+    }
+
+    select, input, textarea {
+        font-size: 99%;
+    }
+
+    pre, code {
+        font: 100% monospace;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    input, textarea {
+        outline: none;
+    }
+
+    input[type="submit"], input[type="text"], textarea {
+        -webkit-appearance: none;
+    }
+
+    /*clearfix*/
+    .clearfix:after {
+        content: ".";
+        display: block;
+        height: 0px;
+        clear: both;
+        line-height: 0;
+        visibility: hidden;
+    }
+
+    .clearfix {
+        *zoom: 1;
+    }
 </style>
