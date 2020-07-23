@@ -9,6 +9,11 @@
   import GlobalHeader from './components/l-global_header'
 
   export default {
+    head: {
+      meta() {
+        return [{name: 'application-name', content: 'vue-router-project'}]
+      }
+    },
     name: 'App',
     components: {
       GlobalHeader

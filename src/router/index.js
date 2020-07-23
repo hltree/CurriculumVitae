@@ -1,7 +1,9 @@
 import Vue from 'vue'
+import VueHead from "vue-head";
 import VueRouter from 'vue-router'
 import Index from '../views/index'
 
+Vue.use(VueHead)
 Vue.use(VueRouter)
 
 export default new VueRouter({
