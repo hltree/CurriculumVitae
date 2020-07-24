@@ -5,10 +5,10 @@
                 h1 {{jsonData.basics.name}} ({{jsonData.basics.id}})
             nav
                 li(v-for="json in jsonData")
-                    a(:href="'#' + json.title") {{json.title}}
-        section.l-section
+                    a(:href="'#' + json.title", v-smooth-scroll) {{json.title}}
+        section.l-section(v-for="json in jsonData", :id="json.title")
             header.c-section-header
-                h2.c-section-header-title {{jsonData.basics.title}}
+                h2.c-section-header-title {{json.title}}
 </template>
 
 <script>
