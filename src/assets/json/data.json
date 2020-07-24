@@ -1,7 +1,9 @@
 {
   "basics": {
-    "name": "John Doe",
-    "label": "Programmer",
+    "title": "Profile",
+    "name": "Naoki Nishida",
+    "id": "hltree",
+    "label": "Web Programmer",
     "picture": "",
     "email": "john@gmail.com",
     "phone": "(912) 555-4321",

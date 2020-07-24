@@ -1,37 +1,26 @@
 <template lang="pug">
     #app
-        GlobalHeader
         router-view
 </template>
 
 <script>
-  import jsonData from './assets/json/data'
-  import GlobalHeader from './components/l-global_header'
-
   export default {
     head: {
       meta() {
         return [{name: 'application-name', content: 'vue-router-project'}]
       }
     },
-    name: 'App',
-    components: {
-      GlobalHeader
-    },
-    data() {
-      return {
-        jsonData
-      }
-    }
+    name: 'App'
   }
 </script>
 
 <style lang="scss">
-
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&display=swap');
     $font_color: #333;
     html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
         background: none repeat scroll 0 0;
         border: 0 none;
+        font-family: 'Noto Sans JP', sans-serif;
         margin: 0;
         outline: 0 none;
         padding: 0;
@@ -40,9 +29,12 @@
     }
 
 
+    html {
+        font-size: 16px;
+    }
     body {
         position: relative;
-        font-size: 16px;
+        font-size: 100%;
         color: $font_color;
         line-height: 1.75;
         overflow-wrap: break-word;
@@ -174,5 +166,13 @@
 
     .clearfix {
         *zoom: 1;
+    }
+
+    .l-section {
+        padding: 60px 20px;
+    }
+
+    .c-section-header {
+
     }
 </style>
