@@ -1,6 +1,8 @@
 <template lang="pug">
     #app
+        #top
         router-view
+        a(href="#top", v-smooth-scroll).l-totop
 </template>
 
 <script>
@@ -158,7 +160,7 @@
     .clearfix:after {
         content: ".";
         display: block;
-        height: 0px;
+        height: 0;
         clear: both;
         line-height: 0;
         visibility: hidden;
@@ -168,8 +170,43 @@
         *zoom: 1;
     }
 
+    .l-totop {
+        bottom: 20px;
+        display: block;
+        height: 40px;
+        position: fixed;
+        right: 20px;
+        transition: transform .3s;
+        width: 40px;
+        &:before, &:after {
+            border-color: transparent transparent #000;
+            border-style: solid;
+            border-width: 0 22px 30px 22px;
+            content: "";
+            display: block;
+            height: 0;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+        }
+        &:after {
+            border-bottom-color: #fff;
+            margin-top: 7px;
+        }
+        &:hover {
+            transform: translateY(-6px);
+        }
+    }
     .l-section {
         padding: 60px 20px;
+        &-inner {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 960px;
+            width: 100%;
+        }
     }
 
     .c-section-header {

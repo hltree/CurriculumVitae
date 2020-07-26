@@ -1,14 +1,17 @@
 <template lang="pug">
     section
         section.l-section
-            .p-mv
-                h1 {{jsonData.basics.name}} ({{jsonData.basics.id}})
-            nav
-                li(v-for="json in jsonData")
-                    a(:href="'#' + json.title", v-smooth-scroll) {{json.title}}
+            .l-section-inner
+                .p-mv
+                    h1.p-mv-title {{jsonData.basics.name}} ({{jsonData.basics.id}})
+                nav.p-main-nav
+                    ul.p-main-nav-list
+                        li(v-for="json in jsonData").p-main-nav-list-item
+                            a(:href="'#' + json.title", v-smooth-scroll) {{json.title}}
         section.l-section(v-for="json in jsonData", :id="json.title")
-            header.c-section-header
-                h2.c-section-header-title {{json.title}}
+            .l-section-inner
+                header.c-section-header
+                    h2.c-section-header-title {{json.title}}
 </template>
 
 <script>
@@ -42,8 +45,49 @@
     .p-mv {
         text-align: center;
 
-        h1 {
+        &-title {
             font-size: 1.5rem;
+        }
+    }
+    .p-main-nav {
+        &-list {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            &-item {
+                width: percentage(1 / 7);
+                & + & {
+                    border-left: 1px solid;
+                }
+                a {
+                    align-items: center;
+                    background: #e8e8e8;
+                    display: flex;
+                    font-size: .9rem;
+                    height: 100%;
+                    justify-content: center;
+                    overflow: hidden;
+                    position: relative;
+                    transition: opacity .6s;
+                    width: 100%;
+                    &:before, &:after {
+                        border-left: 100px solid #ccc;
+                        content: "";
+                        display: block;
+                        height: 0;
+                        position: absolute;
+                        width: 0;
+                    }
+                    &:before {
+
+                    }
+                    &:after {
+
+                    }
+                    &:hover {
+                    }
+                }
+            }
         }
     }
 </style>
