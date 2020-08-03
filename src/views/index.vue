@@ -7,7 +7,8 @@
                 nav.p-main-nav
                     ul.p-main-nav-list
                         li(v-for="json in jsonData").p-main-nav-list-item
-                            a(:href="'#' + json.title", v-smooth-scroll) {{json.title}}
+                            a(:href="'#' + json.title", v-smooth-scroll)
+                                span {{json.title}}
         section.l-section(v-for="json in jsonData", :id="json.title")
             .l-section-inner
                 header.c-section-header
@@ -70,21 +71,22 @@
                     position: relative;
                     transition: opacity .6s;
                     width: 100%;
-                    &:before, &:after {
-                        border-left: 100px solid #ccc;
+                    &:before {
                         content: "";
                         display: block;
-                        height: 0;
+                        height: 100%;
+                        left: 0;
                         position: absolute;
+                        top: 0;
+                        transition: width .3s;
                         width: 0;
                     }
-                    &:before {
-
-                    }
-                    &:after {
-
-                    }
                     &:hover {
+                        color: #fff;
+                        &:before {
+                            background-color: green;
+                            width: 100%;
+                        }
                     }
                 }
             }
