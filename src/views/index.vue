@@ -4,19 +4,22 @@
             .l-section-inner
                 .p-mv
                     h1.p-mv-title {{jsonData.basics.name}} ({{jsonData.basics.id}})
-                nav.p-main-nav
-                    ul.p-main-nav-list
-                        li(v-for="json in jsonData").p-main-nav-list-item
-                            a(:href="'#' + json.title", v-smooth-scroll)
-                                span {{json.title}}
-        section.l-section(v-for="json in jsonData", :id="json.title")
+                .p-main-nav-area.js-floatPosition
+                    nav.p-main-nav.js-floatNav
+                        ul.p-main-nav-list
+                            li(v-for="json in jsonData").p-main-nav-list-item
+                                a(:href="'#' + json.title", v-smooth-scroll)
+                                    span {{json.title}}
+        section.l-section(v-for="(json, key) in jsonData", :id="json.title")
             .l-section-inner
                 header.c-section-header
                     h2.c-section-header-title {{json.title}}
+
 </template>
 
 <script>
   import jsonData from '../assets/json/data'
+  import $ from 'jquery';
 
   export default {
     head: {
@@ -38,6 +41,23 @@
       return {
         jsonData
       }
+    },
+    mounted() {
+      const position = $('.js-floatPosition');
+      const floatNav = $('.js-floatNav');
+
+      if (floatNav && position && 0 < floatNav.length && 0 < position.length) {
+        $(window).on('scroll', function () {
+          const positionTop = position.offset().top;
+          if(positionTop <= $(this).scrollTop()) {
+            floatNav.addClass('_is-fixed')
+          } else {
+            if (floatNav.hasClass('_is-fixed')) {
+              floatNav.removeClass('_is-fixed')
+            }
+          }
+        })
+      }
     }
   }
 </script>
@@ -51,10 +71,21 @@
         }
     }
     .p-main-nav {
+        position: absolute;
+        top: 0;
+        width: 960px;
+        z-index: 100;
+        &._is-fixed {
+            position: fixed;
+        }
+        &-area {
+            margin-top: 40px;
+            padding-top: 40px;
+            position: relative;
+        }
         &-list {
             display: flex;
             justify-content: space-between;
-            margin-top: 40px;
             &-item {
                 width: percentage(1 / 7);
                 & + & {
@@ -68,6 +99,7 @@
                     height: 100%;
                     justify-content: center;
                     overflow: hidden;
+                    padding: 5px 10px;
                     position: relative;
                     transition: opacity .6s;
                     width: 100%;
