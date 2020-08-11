@@ -1,15 +1,14 @@
 <template lang="pug">
     section
+        nav.p-main-nav
+            ul.p-main-nav-list
+                li(v-for="json in jsonData").p-main-nav-list-item
+                    a(:href="'#' + json.title", v-smooth-scroll)
+                        span {{json.title}}
         section.l-section
             .l-section-inner
                 .p-mv
                     h1.p-mv-title {{jsonData.basics.name}} ({{jsonData.basics.id}})
-                .p-main-nav-area.js-floatPosition
-                    nav.p-main-nav.js-floatNav
-                        ul.p-main-nav-list
-                            li(v-for="json in jsonData").p-main-nav-list-item
-                                a(:href="'#' + json.title", v-smooth-scroll)
-                                    span {{json.title}}
         section.l-section(v-for="(json, key) in jsonData", :id="json.title")
             .l-section-inner
                 header.c-section-header
@@ -19,7 +18,6 @@
 
 <script>
   import jsonData from '../assets/json/data'
-  import $ from 'jquery';
 
   export default {
     head: {
@@ -41,23 +39,6 @@
       return {
         jsonData
       }
-    },
-    mounted() {
-      const position = $('.js-floatPosition');
-      const floatNav = $('.js-floatNav');
-
-      if (floatNav && position && 0 < floatNav.length && 0 < position.length) {
-        $(window).on('scroll', function () {
-          const positionTop = position.offset().top;
-          if(positionTop <= $(this).scrollTop()) {
-            floatNav.addClass('_is-fixed')
-          } else {
-            if (floatNav.hasClass('_is-fixed')) {
-              floatNav.removeClass('_is-fixed')
-            }
-          }
-        })
-      }
     }
   }
 </script>
@@ -71,29 +52,34 @@
         }
     }
     .p-main-nav {
-        position: absolute;
+        background: #fff;
+        left: 50%;
+        position: fixed;
         top: 0;
-        width: 960px;
+        transform: translateX(-50%);
+        width: 100%;
         z-index: 100;
-        &._is-fixed {
-            position: fixed;
-        }
-        &-area {
-            margin-top: 40px;
-            padding-top: 40px;
-            position: relative;
-        }
         &-list {
             display: flex;
             justify-content: space-between;
+            margin-left: auto;
+            margin-right: auto;
+            width: 960px;
             &-item {
+                align-items: center;
+                display: flex;
                 width: percentage(1 / 7);
                 & + & {
-                    border-left: 1px solid;
+                    &:before {
+                        border-left: 1px solid #8e8e8e;
+                        content: "";
+                        display: block;
+                        height: 50%;
+                        width: 0;
+                    }
                 }
                 a {
                     align-items: center;
-                    background: #e8e8e8;
                     display: flex;
                     font-size: .9rem;
                     height: 100%;
@@ -103,22 +89,8 @@
                     position: relative;
                     transition: opacity .6s;
                     width: 100%;
-                    &:before {
-                        content: "";
-                        display: block;
-                        height: 100%;
-                        left: 0;
-                        position: absolute;
-                        top: 0;
-                        transition: width .3s;
-                        width: 0;
-                    }
                     &:hover {
-                        color: #fff;
-                        &:before {
-                            background-color: green;
-                            width: 100%;
-                        }
+                        opacity: .6;
                     }
                 }
             }
