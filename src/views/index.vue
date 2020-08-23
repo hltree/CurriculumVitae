@@ -4,15 +4,7 @@
             ul.p-main-nav-list
                 li(v-for="json in jsonData").p-main-nav-list-item
                     a(:href="'#' + json.title", v-smooth-scroll)
-                        span {{json.title}}
-        section.l-section
-            .l-section-inner
-                .p-mv
-                    h1.p-mv-title {{jsonData.basics.name}} ({{jsonData.basics.id}})
-        section.l-section(v-for="(json, key) in jsonData", :id="json.title")
-            .l-section-inner
-                header.c-section-header
-                    h2.c-section-header-title {{json.title}}
+                        span
 
 </template>
 
