@@ -9,8 +9,6 @@
 </template>
 
 <script>
-  import jsonData from '../assets/json/data'
-
   export default {
     head: {
       title() {
