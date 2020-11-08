@@ -1,11 +1,7 @@
 <template lang="pug">
-    section
-        nav.p-main-nav
-            ul.p-main-nav-list
-                li(v-for="json in jsonData").p-main-nav-list-item
-                    a(:href="'#' + json.title", v-smooth-scroll)
-                        span
-
+    v-app
+        v-card-title
+            h1.display-1 テスト
 </template>
 
 <script>
@@ -24,11 +20,6 @@
           {name: 'description', content: 'ウェブエンジニア ニシダナオキ (hltree)のポートフォリオサイトです。'}
         ]
       },
-    },
-    data() {
-      return {
-        jsonData
-      }
     }
   }
 </script>
